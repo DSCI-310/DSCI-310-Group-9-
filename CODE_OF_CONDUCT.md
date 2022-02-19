@@ -17,6 +17,7 @@ The following are examples of inappropriate behaviour
 * The use of insults or verbal attacks that would ridcule or exclude members of this class
 * Publishing private information without explicit consent
 * The use of unwelcome sexual attention or advances
+* Any behaviour that would violate the DSCI 310 Code of Conduct
 
 ## Consequences ##
 Project members that do not follow or enforce the Code of Conduct may receive reprecussions as determinded by the teaching team or the faculty.
