@@ -68,4 +68,4 @@
 #
 #WORKDIR "${HOME}"
 
-FROM jupyter/scipy-notebook:latest
+FROM jupyter/scipy-notebook:b418b67c225b
