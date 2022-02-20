@@ -27,6 +27,8 @@ After pulling image:
 Failing to run the code inside the speicifed container may lead to unexpected result due to the versioning of the imported libraries. The dependencies of this project are also listed below for reference. 
 
 ## List of Dependencies
+Using `python 3.9.5`
+
 Package Name              | Version     | Channel
 --------------------------|-------------|----------
 pandas                    | 1.3.5       | conda-forge
