@@ -7,7 +7,7 @@ This project is managed and built by the group 9 of the UBC DSCI310 offered in 2
 ## Project Summary
 Written in Python language, this project aims to train a Logistic Regression model provided in the scikit-learn package to predict the car price based on the door count, passenger capacity, trunk space, safety, class, and maintenance. Our training employs 10-fold cross validation to tune the hypter-parameters to avoid overfitting while making the best use of our training set. The dataset used for training is the Car Evaluation dataset retrived from the UC Irvine Machine Learning Repository. 
 
-## Porject Execution
+## Project Execution
 The code for this project is included in the car_analysis.ipynb in the repositoy. In order to properly run and get reproducable result, please use the Dockerfile we created and attached in this repository to construct a container with the same environment we used for development, then run the jupyter notebook inside the container. Please follow the instructions presented here to set up the container.
 
 Inside directory with Dockerfile do this to build the image:  
@@ -27,6 +27,8 @@ After pulling image:
 Failing to run the code inside the speicifed container may lead to unexpected result due to the versioning of the imported libraries. The dependencies of this project are also listed below for reference. 
 
 ## List of Dependencies
+Using `python 3.9.5`
+
 Package Name              | Version     | Channel
 --------------------------|-------------|----------
 pandas                    | 1.3.5       | conda-forge
