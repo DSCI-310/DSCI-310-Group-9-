@@ -22,9 +22,21 @@ Pull image from dockerHub:
 `docker pull zhangfred8/dsci-310-group-9:latest`  
 
 After pulling image:  
-`docker run --rm -p 8888:8888 zhangfred8/dsci-310-group-9`  
+`docker run --rm -p 8888:8888 zhangfred8/dsci-310-group-9`
+
+Copy the resulting URL from the prompt that begins with,
+`http://127.0.0.1:888/lab?token=<your token>`
+and paste the URL into your preferred web browser to start the Jupyter notebook
+
 
 Failing to run the code inside the speicifed container may lead to unexpected result due to the versioning of the imported libraries. The dependencies of this project are also listed below for reference. 
+
+## Testing
+Our project uses the `Pytest` testing framework
+
+Once you have started the Jupyter Notebook, to run our test suite, use the following command in the root directory of the project:
+`python -m pytest tests/pytest/`
+
 
 ## List of Dependencies
 Using `python 3.9.5`
@@ -40,6 +52,7 @@ jupyterlab-lsp            | 3.10.0      | conda-forge
 jupyter-lsp-python        | 1.5.1       | conda-forge
 scikit-learn              | 1.0.0       | conda-forge
 matplot-lib               | 3.5.1       | conda-forge
+pytest                    | 7.0.1       | conda-forge
 
 ## License
 Please note that this open-source project is licensed under the **MIT License**. For the details, please refer to the LICENSE.md in this repository.
