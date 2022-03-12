@@ -34,7 +34,8 @@ Failing to run the code inside the speicifed container may lead to unexpected re
 ## Testing
 Our project uses the `Pytest` testing framework
 
-Once you have started the Jupyter Notebook, to run our test suite, use the following command in the root directory of the project:
+Once you have started the Jupyter Notebook, to run our test suite, 
+run the following command in the root directory of the project:
 `python -m pytest tests/pytest/`
 
 
