@@ -1,25 +1,11 @@
 import pandas as pd
 from pandas import DataFrame
+from ctypes import c_uint16
+import pandas as pd
+import sys
+sys.path.append( '/DSCI-310-Group-9-' )
+from src.rm_null import rm_null
 
-
-def rm_null(df: DataFrame):
-    """
-    Remove null values
-
-    Checks if the inputted dataframe has any null values, and removes them if they exist, otherwise
-    will print that no null values are present
-    :param df: a dataframe or dataframe extension
-    :return: a dataframe
-
-    example:
-    rm_null(car_table)
-    """
-    if df.isnull().values.any():
-        return df.dropna()
-    else:
-        return df
-    
-    
 def test_rm_null():
     """
     Test remove null values
