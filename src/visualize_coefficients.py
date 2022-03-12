@@ -18,6 +18,10 @@ import matplotlib.pyplot as plt
 # visualize_coefficients(mydf, "mygraph", "x-axis", "y-axis")
 def visualize_coefficients(df, title, x_name, y_name):
 
+    colors = {'Negative' : 'red', 'Positive' : 'blue'}
+    labels = colors.keys()
+    handles = [plt.Rectangle((0,0),1,1, color=colors[label]) for label in labels]
+    
     try:
         if not isinstance(x_name, str) or not isinstance(y_name,str):
             raise RuntimeError("Not a string")
@@ -42,8 +46,8 @@ def visualize_coefficients(df, title, x_name, y_name):
         if row[y_name] < 0:
             axes.bar(row[x_name], row[y_name], color="red", label="Negative Values")
         else:
-            axes.bar(row[x_name], row[y_name], label="Positive Values")
+            axes.bar(row[x_name], row[y_name], color="blue")
 
-    axes.legend(loc="upper left")
+    axes.legend(handles, labels, loc="upper left")
 
     return fig2
