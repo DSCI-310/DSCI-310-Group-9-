@@ -54,6 +54,7 @@ jupyter-lsp-python        | 1.5.1       | conda-forge
 scikit-learn              | 1.0.0       | conda-forge
 matplot-lib               | 3.5.1       | conda-forge
 pytest                    | 7.0.1       | conda-forge
+numpy                     | 1.22.3      | conda-forge
 
 ## License
 Please note that this open-source project is licensed under the **MIT License**. For the details, please refer to the LICENSE.md in this repository.
