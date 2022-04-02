@@ -67,13 +67,28 @@ head = car_table.head()
 rm_null(car_table)
 
 price = pd.DataFrame(car_table["price"])
-price.head()
 ```
 
 ```{r car-tab, echo=FALSE}
 
 knitr::kable(py$head, caption='Car Features')
 ```
+From Table \@ref(tab:car-tab), we can see that our car features consist of: maintenance, number of doors, number of people, luggage boot space, safety, and class.
+
+For each feature, the possible values are:
+
+maint : {low, med, high, vhigh}
+
+doors : {2, 3, 4, 5more}
+
+persons :{2, 4, more}
+
+luggage : {small, med, big}
+
+safety : {low, med, high}
+
+class : {unacc, acc, good, vgood}
+
 
 ```{python include=FALSE}
 
@@ -87,9 +102,12 @@ plt.savefig("../results/price_dist")
 plt.figure(figsize=(15, 12), dpi= 300)
 ```
 
-```{r, echo=FALSE, out.width='75%', fig.cap='Distribution of Price Variable'}
+```{r price-dist, echo=FALSE, out.width='75%', fig.cap='Distribution of Price Variable'}
 knitr::include_graphics("../results/price_dist.png")
 ```
+
+From Figure \@ref(fig:price-dist), we can see that there are no class imbalances for our target class, price.
+
 
 ```{python include=FALSE}
 # categorizing features(price, maint, doors, persons, lug_boot, safety, class) to be used a in column transformer to enable easy manipulation of data frame
@@ -148,7 +166,7 @@ coeff_df = pd.DataFrame(df1)
 coeff_df = coeff_df[['features', 'coefficient']]
 ```
 
-```{r echo=FALSE}
+```{r feat-tab, out.width='50%', echo=FALSE}
 knitr::kable(py$coeff_df, caption="Weight of Features in a Linear Model")
 ```
 
@@ -157,9 +175,11 @@ visualize_coefficients(df1, "Graph of training coefficients", "features", "coeff
 plt.savefig("../results/coeff_fig1")
 ```
 
-```{r echo=FALSE, out.width='75%', fig.cap='Training Coefficients of a Linear Model'}
+```{r feat-graph, echo=FALSE, out.width='75%', fig.cap='Training Coefficients of a Linear Model'}
 knitr::include_graphics("../results/coeff_fig1.png")
 ```
+
+We trained a linear model using car our data and will now try to understand which features influences the price the most. From both Figure \@ref(fig:feat-graph) and Table \@ref(tab:feat-tab), we can see that a higher safety level(low to high) is a feature that increases the price of the car the most. On the other hand, the price of the car decreases the most by having a higher class feature.
 
 # Discussion
 
