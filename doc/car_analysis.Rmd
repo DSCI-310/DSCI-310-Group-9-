@@ -2,9 +2,12 @@
 title: 'Car Evaluation'
 author: "Allan, Fred, Ayasha, and Zhe"
 output:
-  toc: true
-  bookdown::html_document2: default
-  bookdown::pdf_document2: default
+  bookdown::html_document2:
+    toc: true
+    toc_depth: 2
+  bookdown::pdf_document2:
+    toc: true
+    toc_depth: 2
 bibliography: references.bib
 ---
 
@@ -42,4 +45,3 @@ from it. In the future, we can see if adding more features such as horsepower or
 interesting to see if introducing more categories in our target variable would increase the accuracy of the model.
  
 # References
-
