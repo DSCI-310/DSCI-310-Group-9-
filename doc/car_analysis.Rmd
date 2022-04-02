@@ -4,12 +4,34 @@ author: "Allan, Fred, Ayasha, and Zhe"
 output:
   bookdown::html_document2:
     toc: true
-    toc_depth: 2
   bookdown::pdf_document2:
     toc: true
-    toc_depth: 2
 bibliography: references.bib
+nocite: '@*'
 ---
+
+```{r, include=FALSE}
+library(knitr)  
+library(reticulate)  
+```
+
+```{python, include=FALSE}
+import pandas as pd
+from sklearn.model_selection import cross_validate, train_test_split
+from sklearn.neighbors import KNeighborsClassifier
+from sklearn.preprocessing import OneHotEncoder, OrdinalEncoder
+from sklearn.pipeline import Pipeline, make_pipeline
+from sklearn.compose import ColumnTransformer, make_column_transformer
+from sklearn.linear_model import LogisticRegression
+import matplotlib.pyplot as plt
+
+import sys
+sys.path.append( '..' )
+from src.features import features
+from src.visualize_coefficients import visualize_coefficients
+from src.rm_null import rm_null
+from src.feature_coeff_table import feature_coef_table
+```
 
 # Summary
 
@@ -34,6 +56,130 @@ buying a car, and how? To study these relationships, we will be using the Car Ev
 categorical values. Based on our initial research, we expect that maintenance and safety will be highly correlated with the buying price.
 
 # Methods & Results
+
+```{python include=FALSE}
+# loading dataset into a readable dataframe
+
+car_table = pd.read_csv('../data/car.data', sep = ",", header=None, names = ["price", "maint", "doors", "persons", "lug_boot", "safety", "class"],)
+
+head = car_table.head()
+# remove any nulls/nan values in the dataframe
+rm_null(car_table)
+
+price = pd.DataFrame(car_table["price"])
+```
+
+```{r car-tab, echo=FALSE}
+
+knitr::kable(py$head, caption='Car Features')
+```
+From Table \@ref(tab:car-tab), we can see that our car features consist of: maintenance, number of doors, number of people, luggage boot space, safety, and class.
+
+For each feature, the possible values are:
+
+maint : {low, med, high, vhigh}
+
+doors : {2, 3, 4, 5more}
+
+persons :{2, 4, more}
+
+luggage : {small, med, big}
+
+safety : {low, med, high}
+
+class : {unacc, acc, good, vgood}
+
+
+```{python include=FALSE}
+
+price = pd.DataFrame(car_table["price"])
+
+# price.value_counts().plot(kind='bar')
+plt.hist(price, bins=7)
+plt.xlabel("Price")
+plt.ylabel("Count")
+plt.savefig("../results/price_dist")
+plt.figure(figsize=(15, 12), dpi= 300)
+```
+
+```{r price-dist, echo=FALSE, out.width='75%', fig.cap='Distribution of Price Variable'}
+knitr::include_graphics("../results/price_dist.png")
+```
+
+From Figure \@ref(fig:price-dist), we can see that there are no class imbalances for our target class, price.
+
+
+```{python include=FALSE}
+# categorizing features(price, maint, doors, persons, lug_boot, safety, class) to be used a in column transformer to enable easy manipulation of data frame
+
+ordinal_feats = ["price", "maint", "doors", "persons", "lug_boot", "safety", "class"]
+
+# categories of each feature
+maint_levels = ['low', 'med', 'high', 'vhigh']
+doors_levels = ['2', '3', '4', '5more']
+persons_levels = ['2', '4', 'more']
+boot_levels = ['small', 'med', 'big']
+safety_levels = ['low', 'med', 'high']
+class_levels = ['unacc', 'acc', 'good', 'vgood']
+
+
+# ordinal encoding of each feature
+column_transformer = make_column_transformer(
+    (OrdinalEncoder(categories=[maint_levels, maint_levels, doors_levels, persons_levels, boot_levels, safety_levels, class_levels],
+                    dtype = int),
+                    ordinal_feats)
+)
+
+X_transformed = column_transformer.fit_transform(car_table)
+column_names = (ordinal_feats)
+
+
+# creating new table after data preprcoessing 
+new_table = pd.DataFrame(X_transformed, columns=column_names)
+
+# splitting of target variable and features
+X_car = features(new_table, 'price')
+Y_car = new_table['price']
+
+
+# splitting of data frame into training and testing data
+X_train, X_Test, y_train, y_test = train_test_split(X_car, Y_car, test_size=0.2, random_state=1)
+
+# features used for modeling
+feats = ["maint", "doors", "persons", "lug_boot", "safety", "class"]
+
+# fitting model for classification analysis
+
+lr = LogisticRegression(max_iter=1000, C=100)
+lr.fit(X_train, y_train)
+
+coeffs = lr.coef_[3]
+
+score = cross_validate(lr, X_Test, y_test, cv=10)
+
+pd.DataFrame(score)
+
+# coefficients of each feature
+
+df1 = feature_coef_table(feats, coeffs)
+coeff_df = pd.DataFrame(df1)
+coeff_df = coeff_df[['features', 'coefficient']]
+```
+
+```{r feat-tab, out.width='50%', echo=FALSE}
+knitr::kable(py$coeff_df, caption="Weight of Features in a Linear Model")
+```
+
+``` {python, include=FALSE}
+visualize_coefficients(df1, "Graph of training coefficients", "features", "coefficient")
+plt.savefig("../results/coeff_fig1")
+```
+
+```{r feat-graph, echo=FALSE, out.width='75%', fig.cap='Training Coefficients of a Linear Model'}
+knitr::include_graphics("../results/coeff_fig1.png")
+```
+
+We trained a linear model using car our data and will now try to understand which features influences the price the most. From both Figure \@ref(fig:feat-graph) and Table \@ref(tab:feat-tab), we can see that a higher safety level(low to high) is a feature that increases the price of the car the most. On the other hand, the price of the car decreases the most by having a higher class feature.
 
 # Discussion
 
