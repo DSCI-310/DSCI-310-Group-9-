@@ -66,6 +66,8 @@ categorical values. Based on our initial research, we expect that maintenance an
 
 # Methods & Results
 
+This analysis aims to train a Logistic Regression model provided in the scikit-learn package to predict the car price based on the door count, passenger capacity, trunk space, safety, class, and maintenance. Our training employs 10-fold cross validation to tune the hypter-parameters to avoid overfitting while making the best use of our training set.
+
 ```{python include=FALSE}
 # loading dataset into a readable dataframe
 
