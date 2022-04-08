@@ -20,6 +20,9 @@
 
 ## Signature:
 Zhe Li
+
 Allan Cho
+
 Fred Zhang
+
 Ayasha Abdalla-Wyse
