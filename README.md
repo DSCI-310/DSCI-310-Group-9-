@@ -24,7 +24,9 @@ Inside directory with Dockerfile, run the following command to build the image:
 After building, then run the following command to start the Jupyter Server on local port `8888`:  
 `docker run --rm -p 8888:8888 dsci-group-9`
 
-You will then see a Jupyter Lab instance opened in your browser.
+Copy the resulting URL from the prompt that begins with,
+`http://127.0.0.1:888/lab?token=<your token>`
+and paste the URL into your preferred web browser to start the Jupyter Lab and run the Jupyter Notebook.
 
 -OR-  
 
