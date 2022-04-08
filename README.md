@@ -7,6 +7,11 @@ This project is managed and built by the group 9 of the UBC DSCI310 offered in 2
 ## Project Summary
 Written in Python language, this project aims to train a Logistic Regression model provided in the scikit-learn package to predict the car price based on the door count, passenger capacity, trunk space, safety, class, and maintenance. Our training employs 10-fold cross validation to tune the hypter-parameters to avoid overfitting while making the best use of our training set. The dataset used for training is the Car Evaluation dataset retrived from the UC Irvine Machine Learning Repository. 
 
+We have found that higher values of class and maintenance features decrease the value of the vehicle. While safety and the higher capacity increase the value of the car the most. It was unexpected because the positive correlation between vehicle capacity and its price as such perception can be subjective. Some people may value having more seats in a car than others due to personal preference. Moreover, we cannot use this model to discuss 
+the impacts of such findings because the accuracy of the model needs to be increased a lot more before anything can be reasonably/confidently inferred 
+from it. In the future, we can see if adding more features such as horsepower or branding of the car affects the value of the vehicle. It would also be 
+interesting to see if introducing more categories in our target variable would increase the accuracy of the model.
+
 ## Project Execution
 The code for this project is included in the car_analysis.ipynb in the repositoy. In order to properly run and get reproducable result, please use the Dockerfile we created and attached in this repository to construct a container with the same environment we used for development, then run the jupyter notebook inside the container. Please follow the instructions presented here to set up the container.
 
