@@ -50,7 +50,8 @@ as well. Following the same line of reasoning, the maintenance of a luxury car i
 large influential factor in the price, because it can account for above 30% of the total cost.
 
 We are interested in determining the relationship between the buying price of a car and its' maintenance cost, number of doors, capacity, safety, the 
-size of the luggage boot (trunk) and class. Therefore, the question we will be exploring in this analysis is: what is the price of a vehicle given the features listed above. To study these relationships, we will be using the Car Evaluation dataset obtained from UC Irvine Machine Learning Repository 
+size of the luggage boot (trunk) and class. Therefore, the question we will be exploring in this analysis is: what is the price of a vehicle given the features listed
+above. To study these relationships, we will be using the Car Evaluation dataset obtained from UC Irvine Machine Learning Repository 
 [@misc_car_evaluation_19]. This dataset contains information about all of the explanatory variables for our analysis and buying price, represented as 
 categorical values. Based on our initial research, we expect that maintenance and safety will be highly correlated with the buying price.
 
