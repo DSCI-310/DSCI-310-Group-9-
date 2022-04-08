@@ -14,15 +14,21 @@ from it. In the future, we can see if adding more features such as horsepower or
 interesting to see if introducing more categories in our target variable would increase the accuracy of the model.
 
 ## Project Execution
-The code for this project is included in the car_analysis.ipynb in the repositoy. In order to properly run and get reproducable result, please use the Dockerfile we created and attached in this repository to construct a container with the same environment we used for development, then run the jupyter notebook inside the container. Please follow the instructions presented here to set up the container.
+The code for this project is included in the car_analysis.ipynb in the repositoy. In order to properly run and get reproducable result, please use the Dockerfile we created and attached in this repository to construct a container with the same environment we used for development, then use the Jupyter Lab integrated in the Docker container to run jupyter notebook inside the container. Please follow the instructions presented here to set up the container.
 
-Inside directory with Dockerfile do this to build the image:  
+Please start a Windows Terminal or Powershell instance and direct the working directory to the location of this repository's root.
+
+Inside directory with Dockerfile, run the following command to build the image:  
 `docker build -t dsci-group-9 .`  
 
-After building, do this to start the Jupyter Server on local port `8888`:  
+After building, then run the following command to start the Jupyter Server on local port `8888`:  
 `docker run --rm -p 8888:8888 dsci-group-9`
 
+You will then see a Jupyter Lab instance opened in your browser.
+
 -OR-  
+
+Please start a Windows Terminal or Powershell instance and direct the working directory to the location of this repository's root.
 
 Pull image from dockerHub:  
 `docker pull zhangfred8/dsci-310-group-9:latest`  
@@ -32,7 +38,7 @@ After pulling image:
 
 Copy the resulting URL from the prompt that begins with,
 `http://127.0.0.1:888/lab?token=<your token>`
-and paste the URL into your preferred web browser to start the Jupyter notebook
+and paste the URL into your preferred web browser to start the Jupyter Lab and run the Jupyter Notebook.
 
 
 Failing to run the code inside the speicifed container may lead to unexpected result due to the versioning of the imported libraries. The dependencies of this project are also listed below for reference. 
