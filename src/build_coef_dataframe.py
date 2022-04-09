@@ -5,13 +5,13 @@ import numpy as np
 #'
 #' Build a dataframe containing features and their coefficients
 #'
-#' @param f A list of String representing the features.
-#' @param c A numpy array of double representing the coefficients of the features
+#' @param feats A list of String representing the features.
+#' @param coeffs A numpy array of double representing the coefficients of the features
 #'
 #' @return A data frame containing features and their coefficients
 #'
 #' @examples features(feats, coeffs)
-def feature_coef_table(f, c):
+def build_coef_dataframe(feats, coeffs):
 
     try:
         if (not isinstance(f, list)):
