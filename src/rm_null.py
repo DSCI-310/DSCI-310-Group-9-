@@ -15,7 +15,7 @@ from pandas import DataFrame
 # @example
 # rm_null(mydf)
 def rm_null(df: DataFrame):
-    if not df == pd.DataFrame():
+    if not isinstance(df, pd.DataFrame):
         raise TypeError("Input must be a DataFrame")
 
     if df.isnull().values.any():
