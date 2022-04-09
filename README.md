@@ -52,6 +52,12 @@ Once you have started the Jupyter Notebook, to run our test suite,
 run the following command in the root directory of the project:  
 `python -m pytest tests/pytest/`
 
+## To run all scripts
+To run the analysis and generate the report, run `make all` in the root directory of the project.
+
+This will generate `doc/car_analysis.html` and `doc/car_analys.pdf`.
+
+To clean the workspace, run `make clean`. This will allow you to rerun the analysis with `make all`.
 
 ## List of Dependencies
 Using `python 3.9.5`
