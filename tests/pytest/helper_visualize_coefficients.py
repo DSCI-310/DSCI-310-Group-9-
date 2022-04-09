@@ -27,6 +27,11 @@ def bad_dataframe():
 def na_dataframe():
     data = {"features": ["vanilla", "chocolate"], "coefficients": [None, 0.6]}
     return pd.DataFrame(data)
+  
+@pytest.fixture
+def only_na_dataframe():
+    data = {"features": ["vanilla", "chocolate"], "coefficients": [None, None]}
+    return pd.DataFrame(data)
 
 @pytest.fixture
 def normal_x_name():

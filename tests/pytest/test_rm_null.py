@@ -22,3 +22,8 @@ def test_df_with_na():
     expected = na_dataframe.dropna()
     actual = rm_null(na_dataframe)
     assert actual.equals(expected)
+    
+def test_df_only_na():
+    expected = only_na_dataframe.dropna()
+    actual = rm_null(only_na_dataframe)
+    assert actual.equals(expected)
