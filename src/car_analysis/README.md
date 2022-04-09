@@ -10,7 +10,15 @@ $ pip install car_analysis
 
 ## Usage
 
-- TODO
+`car_analysis` can be used to process and visualize car data, consisting of four functions: rm_null(), features(), build_coef_dataframe() for processing and visualize_coefficients() for visualizing. It can be used as follows:
+
+```python
+from car_analysis import *
+file_path = "car_data.csv" # path to your file
+data = rm_null(file_path)
+feature = features(data, "feature_of_interest")
+coefficients = build_coef_dataframe([feature_names], [coefficients])
+figure = visualize_coefficients(coefficients, "Title", "x label", "y label")
 
 ## Contributing
 
