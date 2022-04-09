@@ -1,11 +1,51 @@
-from car_analysis import car_analysis
+from car_analysis import *
 import pandas as pd
+import numpy as np
 from pandas import DataFrame
 from ctypes import c_uint16
 import pandas as pd
 import sys
 import pytest
 sys.path.append( '/DSCI-310-Group-9-')
+
+@pytest.fixture
+def not_a_dataframe():
+    return 10
+
+
+@pytest.fixture
+def not_a_string():
+    return 10
+
+
+@pytest.fixture
+def normal_dataframe():
+    data = {"features": ["vanilla", "chocolate"], "coefficients": [-0.1, 0.6]}
+    return pd.DataFrame(data)
+
+@pytest.fixture
+def bad_dataframe():
+    data = {"features": ["vanilla", "chocolate"], "coefficients": ["ice cream", 0.6]}
+    return pd.DataFrame(data)
+  
+@pytest.fixture
+def na_dataframe():
+    data = {"features": ["vanilla", "chocolate"], "coefficients": [None, 0.6]}
+    return pd.DataFrame(data)
+  
+@pytest.fixture
+def only_na_dataframe():
+    data = {"features": ["vanilla", "chocolate"], "coefficients": [None, None]}
+    return pd.DataFrame(data)
+
+@pytest.fixture
+def normal_x_name():
+    return "features"
+
+
+@pytest.fixture
+def normal_y_name():
+    return "coefficients"
 
 # tests for rm_null  
 def test_not_a_df():
@@ -19,37 +59,21 @@ def test_df_no_na():
     assert actual.equals(expected)
     
 def test_df_with_na():
-    expected = na_dataframe.dropna()
+    na = na_dataframe
+    expected = na.dropna()
     actual = rm_null(na_dataframe)
     assert actual.equals(expected)
     
 def test_df_only_na():
-    expected = only_na_dataframe.dropna()
-    actual = rm_null(only_na_dataframe)
+    all_na = only_na_dataframe
+    expected = all_na.dropna()
+    actual = rm_null(only_na_dataframe())
     assert actual.equals(expected)
 
 
 # tests for features
-car_table = pd.read_csv('data/car.data', sep = ",", header=None, names = ["price", "maint", "doors", "persons", "lug_boot", "safety", "class"],)
 
 # testing features function
-def test_same_columnSize():
-    expected = car_table.shape[1] - 1
-    actual = features(car_table, 'price').shape[1]
-    assert actual == expected, 'Number of columns are not equal!'
-
-# testing rows are equal
-def test_same_rowSize():
-    expected = car_table.shape[0]
-    actual = features(car_table, 'price').shape[0]
-    assert actual == expected, 'Number of rows are not equal!'
-
-# testing if column stays the same
-def test_same_value():
-    expected = car_table['maint'][0]
-    actual = features(car_table, 'price')['maint'][0]
-    assert actual == expected, 'First value is not the same'
-
 # right input
 def test_right_input1():
     #expected
@@ -89,20 +113,20 @@ coeffs = np.array([1, 2, 3])
 
 def test_correct_input():
     expected = pd.DataFrame({"features":features, "coefficient":coeffs})
-    actual = feature_coef_table(features, coeffs)
+    actual = build_coef_dataframe(features, coeffs)
     assert actual.equals(expected), 'Works when the input are correctly formatted'
 
 def test_incorrect_features_type():
     expected = RuntimeError
-    actual = feature_coef_table("feature123", coeffs)
+    actual = build_coef_dataframe("feature123", coeffs)
 
 def test_incorrect_feature_type():
     expected = RuntimeError
-    actual = feature_coef_table(["feature1", 2, "feature3"], coeffs)
+    actual = build_coef_dataframe(["feature1", 2, "feature3"], coeffs)
 
 def test_incorrect_coeffs_type():
     expected = RuntimeError
-    actual = feature_coef_table(features, [1, 2, 3])
+    actual = build_coef_dataframe(features, [1, 2, 3])
 
 
 # tests for visualize_coefficients

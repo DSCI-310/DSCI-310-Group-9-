@@ -1,6 +1,7 @@
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
+import pytest
 from pandas import DataFrame
 
 #' rm_null
@@ -18,7 +19,7 @@ from pandas import DataFrame
 #' rm_null(mydf)
 
 def rm_null(df: DataFrame):
-    if not df == pd.DataFrame():
+    if not isinstance(df, pd.DataFrame):
         raise TypeError("Input must be a DataFrame")
 
     if df.isnull().values.any():
@@ -42,20 +43,9 @@ def rm_null(df: DataFrame):
 #' @examples features(car_table, price)
 
 def features(data_frame, target_Value):
-    try:
-        if(not isinstance(target_Value, str)):
-            raise RuntimeError("Not a string")
-        if(not isinstance(data_frame, pd.DataFrame)):
-            raise RuntimeError("Not a dataframe")
-        
-        return data_frame.drop(columns=target_Value)
-    except AttributeError as err:
-        print("Not a dataframe, data_frame", err)
-    except RuntimeError:
-        print("Not a string/data frame")
-        
-    # return a data frame without one column: targetValue
+    return data_frame.drop(columns=target_Value)
 
+# return a data frame without one column: targetValue
 
 #' build_coef_dataframe
 #'
