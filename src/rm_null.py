@@ -14,6 +14,9 @@ def rm_null(df: DataFrame):
     example:
     rm_null(car_table)
     """
+    if not df == pd.DataFrame():
+        raise TypeError("Input must be a DataFrame")
+        
     if df.isnull().values.any():
         return df.dropna()
     else:
