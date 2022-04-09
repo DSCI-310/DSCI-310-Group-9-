@@ -5,19 +5,20 @@ import pandas as pd
 import sys
 sys.path.append( '/DSCI-310-Group-9-' )
 from src.rm_null import rm_null
-
-def test_rm_null():
-    """
-    Test remove null values
-    """
-    na_test = pd.DataFrame({"price": ["low", "med", "high"],
-                            "maint": [None, "vhigh", "low"]})
-    no_na_test = pd.DataFrame({"price": ["low", "med", "high"],
-                               "maint": ["med", "vhigh", "low"]})
-    na_expected = na_test.dropna()
-    no_na_expected = no_na_test
-
-    na_actual = rm_null(na_test)
-    no_na_actual = rm_null(no_na_test)
-    assert na_actual.equals(na_expected)
-    assert no_na_actual.equals(no_na_actual)
+from helper_visualize_coefficients import *
+  
+  
+def test_not_a_df():
+    expected = TypeError
+    actual = rm_null(not_a_dataframe)
+    assert isinstance(actual, expected)
+    
+def test_df_no_na():
+    expected = normal_dataframe
+    actual = rm_null(normal_dataframe)
+    assert actual.equals(expected)
+    
+def test_df_with_na():
+    expected = na_dataframe.dropna()
+    actual = rm_null(na_dataframe)
+    assert actual.equals(expected)
