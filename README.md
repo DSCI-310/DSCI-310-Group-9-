@@ -78,7 +78,8 @@ numpy                     | 1.22.3      | conda-forge
 r-knitr                   | 1.38        | conda-forge
 r-rmarkdown               | 2.13        | conda-forge
 r-bookdown                | 0.25        | conda-forge
-r-reticulate              | 1.24        | conda forge
+r-reticulate              | 1.24        | conda-forge
+r-base                    | 4.1.2       | conda-forge
 
 ## License
 Please note that the code of this open-source project is licensed under the **MIT License**. For the details, please refer to the LICENSE.md in this repository.
