@@ -22,7 +22,7 @@ Inside directory with Dockerfile, run the following command to build the image:
 `docker build -t dsci-group-9 .`  
 
 After building, then run the following command to start the Jupyter Server on local port `8888`:  
-`docker run --rm -p 8888:8888 dsci-group-9`
+`docker run --rm -p 8888:8888 --user root -e NB_USER=dsci-user -e NB_UID=1234 -e NB_GID=1234 -e CHOWN_HOME=yes -e CHOWN_HOME_OPTS="-R" -v "${PWD}"/test:/home/dsci-user/work dsci-group-9`
 
 Copy the resulting URL from the prompt that begins with,
 `http://127.0.0.1:888/lab?token=<your token>`
