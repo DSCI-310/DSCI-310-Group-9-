@@ -36,7 +36,7 @@ Pull image from dockerHub:
 `docker pull zhangfred8/dsci-310-group-9:latest`  
 
 After pulling image:  
-`docker run --rm -p 8888:8888 zhangfred8/dsci-310-group-9`
+`docker run --rm      -p 8888:8888      --user root      -e NB_USER=dsci-user     -e NB_UID=1234      -e NB_GID=1234      -e CHOWN_HOME=yes      -e CHOWN_HOME_OPTS="-R"      -v "${PWD}"/test:/home/dsci-user/work     zhangfred8/dsci-310-group-9`
 
 Copy the resulting URL from the prompt that begins with,
 `http://127.0.0.1:888/lab?token=<your token>`
@@ -67,8 +67,12 @@ jupyterlab-lsp            | 3.10.0      | conda-forge
 jupyter-lsp-python        | 1.5.1       | conda-forge
 scikit-learn              | 1.0.0       | conda-forge
 matplot-lib               | 3.5.1       | conda-forge
-pytest                    | 7.0.1       | conda-forge
+pytest                    | 3.2.2       | conda-forge
 numpy                     | 1.22.3      | conda-forge
+r-knitr                   | 1.38        | conda-forge
+r-rmarkdown               | 2.13        | conda-forge
+r-bookdown                | 0.25        | conda-forge
+r-reticulate              | 1.24        | conda forge
 
 ## License
 Please note that the code of this open-source project is licensed under the **MIT License**. For the details, please refer to the LICENSE.md in this repository.
