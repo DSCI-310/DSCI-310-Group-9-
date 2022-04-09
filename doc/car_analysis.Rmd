@@ -30,7 +30,7 @@ sys.path.append( '..' )
 from src.features import features
 from src.visualize_coefficients import visualize_coefficients
 from src.rm_null import rm_null
-from src.feature_coeff_table import feature_coef_table
+from src.build_coef_dataframe import build_coef_dataframe
 ```
 
 # Summary
@@ -172,7 +172,7 @@ pd.DataFrame(score)
 
 # coefficients of each feature
 
-df1 = feature_coef_table(feats, coeffs)
+df1 = build_coef_dataframe(feats, coeffs)
 coeff_df = pd.DataFrame(df1)
 coeff_df = coeff_df[['features', 'coefficient']]
 ```

@@ -3,7 +3,7 @@ import pandas as pd
 import numpy as np
 import sys
 
-from src.feature_coeff_table import feature_coef_table
+from src.feature_coeff_table import build_coef_dataframe
 
 features = ["feature1", "featuren2", "feature3"]
 coeffs = np.array([1, 2, 3])
