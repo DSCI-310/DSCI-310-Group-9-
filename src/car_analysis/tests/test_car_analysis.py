@@ -67,7 +67,7 @@ def test_df_with_na(na_dataframe):
 def test_df_only_na(only_na_dataframe):
     all_na = only_na_dataframe
     expected = all_na.dropna()
-    actual = rm_null(only_na_dataframe())
+    actual = rm_null(only_na_dataframe)
     assert actual.equals(expected)
 
 
