@@ -14,9 +14,9 @@ import numpy as np
 def build_coef_dataframe(feats, coeffs):
 
     try:
-        if (not isinstance(f, list)):
+        if (not isinstance(feats, list)):
             raise RuntimeError("expect a list for features.")
-        if (not isinstance(c, np.ndarray)):
+        if (not isinstance(coeffs, np.ndarray)):
             raise RuntimeError("expect a list for features.")
         for i in f:
             if (not isinstance(i, str)):

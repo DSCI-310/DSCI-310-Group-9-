@@ -7,11 +7,11 @@ import pandas as pd
 import sys
 import pytest
 sys.path.append( '/DSCI-310-Group-9-')
+import matplotlib.figure
 
 @pytest.fixture
 def not_a_dataframe():
     return 10
-
 
 @pytest.fixture
 def not_a_string():
@@ -58,13 +58,13 @@ def test_df_no_na():
     actual = rm_null(normal_dataframe)
     assert actual.equals(expected)
     
-def test_df_with_na():
+def test_df_with_na(na_dataframe):
     na = na_dataframe
     expected = na.dropna()
     actual = rm_null(na_dataframe)
     assert actual.equals(expected)
     
-def test_df_only_na():
+def test_df_only_na(only_na_dataframe):
     all_na = only_na_dataframe
     expected = all_na.dropna()
     actual = rm_null(only_na_dataframe())
