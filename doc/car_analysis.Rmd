@@ -1,0 +1,31 @@
+---
+title: 'Car Evaluation'
+author: "Allan, Fred, Ayasha, and Zhe"
+output:
+  bookdown::html_document2:
+    toc: true
+    toc_depth: 2
+  bookdown::pdf_document2:
+    toc: true
+    toc_depth: 2
+bibliography: references.bib
+---
+
+# Summary
+
+We will be training a model to predict the price of a car using the given features: maintenance, number of doors, number of people that can fit in the 
+car, car trunk space, safety and class.
+
+# Introduction
+
+When making large purchases, it is incredibly important to consider all of the factors that go into the pricing and decision to commit to buying. With a rise in car prices [@capparella_2021], this is an essential consideration. There are several factors that influence the price of a car, for example brand, size, safety, etc. The overall safety of a car increases the cost, because of individual features and equipment, including backup cameras, video displays and automatic emergency braking [@henry_2022]. When purchasing a vehicle, you are not only investing in the price of the car itself, but the cost of insurance, which is also influenced by a number of features. On average, the insurance cost for a 4-door car is cheaper than a 2-door, because of the target buyers, sticker and repair costs, etc [@vallet_2021]. As 2-door cars are typically sports and luxury cars, the materials and technology used to manufacture them will likely be luxury as well. Following the same line of reasoning, the maintenance of a luxury car is expected to be more expensive. The maintenance cost is likely to be a large influential factor in the price, because it can account for above 30% of the total cost [@purdy_wiegmann].
+
+We are interested in determining the relationship between the buying price of a car and its' maintenance cost, number of doors, capacity, safety, the size of the luggage boot (trunk) and class. Therefore, the question we will be exploring in this analysis is: do these factors influence the cost of buying a car, and how? To study these relationships, we will be using the Car Evaluation dataset obtained from UC Irvine Machine Learning Repository [@misc_car_evaluation_19]. This dataset contains information about all of the explanatory variables for our analysis and buying price, represented as categorical values. Based on our initial research, we expect that maintenance and safety will be highly correlated with the buying price.
+
+# Methods & Results
+
+# Discussion
+
+We have found that higher values of class and maintenance features decrease the value of the vehicle. While safety and the higher number of people that can fit in the car increase the value of the car the most. It was not what we expected because the value of the vehicle being increased by more people is subjective. Some people may value having more seats in a car than others due to personal preference. Moreover, we cannot use this model to discuss the impacts of such findings because the accuracy of the model needs to be increased a lot more before anything can be reasonably/confidently inferred from it. In the future, we can see if adding more features such as horsepower or branding of the car affects the value of the vehicle. It would also be interesting to see if introducing more categories in our target variable would increase the accuracy of the model.
+ 
+# References
