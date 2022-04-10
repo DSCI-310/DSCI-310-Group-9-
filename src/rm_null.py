@@ -15,8 +15,11 @@ from pandas import DataFrame
 # @example
 # rm_null(mydf)
 def rm_null(df: DataFrame):
-    if not isinstance(df, pd.DataFrame):
-        raise TypeError("Input must be a DataFrame")
+    try:
+        if not isinstance(df, pd.DataFrame):
+            raise TypeError("Input must be a DataFrame");
+    except TypeError as err:
+        return err
 
     if df.isnull().values.any():
         return df.dropna()
