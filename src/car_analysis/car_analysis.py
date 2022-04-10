@@ -62,15 +62,15 @@ def features(data_frame, target_Value):
 def build_coef_dataframe(feats, coeffs):
 
     try:
-        if (not isinstance(f, list)):
+        if (not isinstance(feats, list)):
             raise RuntimeError("expect a list for features.")
-        if (not isinstance(c, np.ndarray)):
+        if (not isinstance(coeffs, np.ndarray)):
             raise RuntimeError("expect a list for features.")
         for i in f:
             if (not isinstance(i, str)):
                 raise RuntimeError("all features should have type String.")
         
-        data = {"features":f, "coefficient":c}
+        data = {"features":feats, "coefficient":coeffs}
         df1 = pd.DataFrame(data)
         df1 = df1.sort_values(by=['coefficient'])
         return df1
